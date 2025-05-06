@@ -1,0 +1,34 @@
+<!-- Main Employee Popup -->
+<app-popup
+  [title]="'Employee Details'"
+  [show]="showPopup"
+  (close)="closePopup()"
+>
+  <form [formGroup]="employeeForm" class="form-group">
+    <label for="empId">Employee ID</label>
+    <input id="empId" type="text" formControlName="empId" />
+
+    <label for="name">Name</label>
+    <input id="name" type="text" formControlName="name" />
+
+    <label for="jobTitle">Job Title</label>
+    <select id="jobTitle" type="text" formControlName="jobTitle">
+      <option *ngFor="let jobTitle of jobTitles" [value]="jobTitle.toString()">
+        {{ jobTitle }}
+      </option>
+    </select>
+
+    <label for="department">Department</label>
+    <select id="department" formControlName="department">
+      <option *ngFor="let department of departments" [value]="department">
+        {{ department }}
+      </option>
+    </select>
+  </form>
+
+  <!-- action buttons -->
+  <div class="action-buttons">
+    <button (click)="onReset()">Reset</button>
+    <button (click)="onSubmit()" color="primary">Save</button>
+  </div>
+</app-popup>
